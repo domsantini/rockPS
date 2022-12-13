@@ -18,13 +18,15 @@ function getComputerChoice(num) {
 getComputerChoice(num);
     
 // Get user input w/ playerSelection
-playerSelection = prompt("What's your selection?").toLowerCase();
+playerSelection = prompt("What's your selection?").toLowerCase()
+
+// Ensure user input is valid
+while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
+    playerSelection = prompt(`${playerSelection} is an invalid input. Please try "rock", "paper", or "scissors"!`).toLowerCase();
+}
 
 // Play a round of RPS given playerSelection and computerSelection
-function play(computerSelection, playerSelection) {
-
-
-}
+//function playRound(computerSelection, playerSelection) {}
 
 // Return winner
 
