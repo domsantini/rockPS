@@ -6,11 +6,11 @@ let num = Math.floor((Math.random() * 3));
 // Define getComputerChoice function
 function getComputerChoice(num) {
     if (num === 0) {
-        computerSelection = "Rock";
+        computerSelection = "rock";
     } else if (num === 1) {
-        computerSelection = "Paper";
+        computerSelection = "paper";
     } else {
-        computerSelection = "Scissors";
+        computerSelection = "scissors";
     }    
 }
 
@@ -18,9 +18,14 @@ function getComputerChoice(num) {
 getComputerChoice(num);
     
 // Get user input w/ playerSelection
-playerSelection = prompt("What's your selection?");
+playerSelection = prompt("What's your selection?").toLowerCase();
 
 // Play a round of RPS given playerSelection and computerSelection
+function play(computerSelection, playerSelection) {
+
+
+}
+
 // Return winner
 
 // Check outputs in console
