@@ -29,8 +29,26 @@ while (playerSelection != "rock" && playerSelection != "paper" && playerSelectio
 function playRound(computerSelection, playerSelection) {
     if (computerSelection == playerSelection) {
         return "Tie! Play again!";
+    } else if (computerSelection == "rock") {
+        if (playerSelection == "paper") {
+            return "Ayo, you won!";
+        } else {
+            return "Aww.. you lost : (";
+        }
+
+    } else if (computerSelection == "paper") {
+        if (playerSelection == "scissors") {
+            return "Ayo, you won!";
+        } else {
+            return "Aww.. you lost : ("
+        }
+
     } else {
-        return "something else";
+        if (playerSelection == "rock") {
+            return "Ayo, you won!"
+        } else {
+            return "Aww.. you lost : (";
+        }
     }
 }
 
