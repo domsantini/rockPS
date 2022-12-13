@@ -26,8 +26,15 @@ while (playerSelection != "rock" && playerSelection != "paper" && playerSelectio
 }
 
 // Play a round of RPS given playerSelection and computerSelection
-//function playRound(computerSelection, playerSelection) {}
+function playRound(computerSelection, playerSelection) {
+    if (computerSelection == playerSelection) {
+        return "Tie! Play again!";
+    } else {
+        return "something else";
+    }
+}
 
+playRound(computerSelection, playerSelection);
 // Return winner
 
 // Check outputs in console
@@ -35,4 +42,5 @@ while (playerSelection != "rock" && playerSelection != "paper" && playerSelectio
 console.log(num);
 console.log(computerSelection);
 console.log(playerSelection);
+console.log(playRound(computerSelection, playerSelection));
 
