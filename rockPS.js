@@ -29,6 +29,13 @@ function getPlayerChoice() {
 
 getPlayerChoice();
 
+// Check for ties
+if (computerSelection === playerSelection) {
+    getComputerChoice(num);
+    getPlayerChoice();
+}
+
+
 // Create counter variables for wins / losses
 let wins = 0;
 let losses = 0;
@@ -36,9 +43,6 @@ let losses = 0;
 
 // Play a round of RPS given playerSelection and computerSelection
 function playRound(computerSelection, playerSelection) {
-    if (computerSelection == playerSelection) {
-        return "Tie! Try again.";
-    } 
     if ((computerSelection === "rock" && playerSelection === "paper") || (computerSelection === "paper" && playerSelection === "scissors") || (computerSelection === "scissors" && playerSelection === "rock")) {
         wins++;
     } else {
