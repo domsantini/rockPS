@@ -18,41 +18,37 @@ function getComputerChoice(num) {
 getComputerChoice(num);
     
 // Get user input w/ playerSelection
-playerSelection = prompt("What's your selection?").toLowerCase()
+function getPlayerChoice() {
+    playerSelection = prompt("What's your selection?").toLowerCase();
 
-// Ensure user input is valid
-while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
-    playerSelection = prompt(`${playerSelection} is an invalid input. Please try "rock", "paper", or "scissors"!`).toLowerCase();
+    // Validate user input
+    while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
+        playerSelection = prompt(`${playerSelection} is an invalid input. Please try "rock", "paper", or "scissors"!`).toLowerCase();
+    }
 }
+
+getPlayerChoice();
+
+// Create counter variables for wins / losses
+let wins = 0;
+let losses = 0;
+
 
 // Play a round of RPS given playerSelection and computerSelection
 function playRound(computerSelection, playerSelection) {
     if (computerSelection == playerSelection) {
-        return "Tie! Play again!";
-    } else if (computerSelection == "rock") {
-        if (playerSelection == "paper") {
-            return "Ayo, you won!";
-        } else {
-            return "Aww.. you lost : (";
-        }
-
-    } else if (computerSelection == "paper") {
-        if (playerSelection == "scissors") {
-            return "Ayo, you won!";
-        } else {
-            return "Aww.. you lost : ("
-        }
-
+        return "Tie! Try again.";
+    } 
+    if ((computerSelection === "rock" && playerSelection === "paper") || (computerSelection === "paper" && playerSelection === "scissors") || (computerSelection === "scissors" && playerSelection === "rock")) {
+        wins++;
     } else {
-        if (playerSelection == "rock") {
-            return "Ayo, you won!"
-        } else {
-            return "Aww.. you lost : (";
-        }
+        losses++;
     }
 }
 
 playRound(computerSelection, playerSelection);
+
+
 // Return winner
 
 // Check outputs in console
@@ -60,5 +56,5 @@ playRound(computerSelection, playerSelection);
 console.log(num);
 console.log(computerSelection);
 console.log(playerSelection);
-console.log(playRound(computerSelection, playerSelection));
-
+console.log(wins);
+console.log(losses);
