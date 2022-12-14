@@ -1,10 +1,11 @@
 // Set variables for computerSelection, playerSelection and generate random number between 0-2
 let computerSelection = undefined;
 let playerSelection = undefined;
-let num = Math.floor((Math.random() * 3));
 
 // Define getComputerChoice function
-function getComputerChoice(num) {
+function getComputerChoice() {
+    let num = Math.floor((Math.random() * 3));
+
     if (num === 0) {
         computerSelection = "rock";
     } else if (num === 1) {
@@ -15,7 +16,7 @@ function getComputerChoice(num) {
 }
 
 // Run getComputerChoice function and assign computerSelection
-getComputerChoice(num);
+// getComputerChoice(num);
     
 // Get user input w/ playerSelection
 function getPlayerChoice() {
@@ -27,19 +28,18 @@ function getPlayerChoice() {
     }
 }
 
-getPlayerChoice();
+// getPlayerChoice();
 
 // Check for ties
-if (computerSelection === playerSelection) {
-    getComputerChoice(num);
-    getPlayerChoice();
-}
+//if (computerSelection === playerSelection) {
+//    getComputerChoice(num);
+//    getPlayerChoice();
+//}
 
 
 // Create counter variables for wins / losses
 let wins = 0;
 let losses = 0;
-
 
 // Play a round of RPS given playerSelection and computerSelection
 function playRound(computerSelection, playerSelection) {
@@ -50,15 +50,25 @@ function playRound(computerSelection, playerSelection) {
     }
 }
 
-playRound(computerSelection, playerSelection);
+//playRound(computerSelection, playerSelection);
 
+// Play a 5 round game
+function game() {
+    for (let i = 0; i < 5; i++) {
+        getComputerChoice();
+        getPlayerChoice();
+        if (computerSelection === playerSelection) {
+            getComputerChoice();
+            getPlayerChoice();
+        }
+        playRound(computerSelection, playerSelection);
+    }
+}
 
-// Return winner
+game();
 
-// Check outputs in console
-
-console.log(num);
-console.log(computerSelection);
-console.log(playerSelection);
-console.log(wins);
-console.log(losses);
+if (wins > losses) {
+    alert(`You won! You got ${wins} wins and the cpu got ${losses}.`);
+} else {
+    alert(`You lost : / CPU got ${losses} wins and you got ${wins}.`);
+};
