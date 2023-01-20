@@ -1,25 +1,29 @@
-// Set variables for cpuSelection, playerSelection and generate random number between 0-2
 let cpuSelection = undefined;
 let playerSelection = undefined;
 
-// const rock = document.querySelector(".rock");
-// const paper = document.querySelector('.paper');
-// const scissors = document.querySelector('.scissors');
 const buttons = document.querySelectorAll('button');
-
 const youScore = document.querySelector('.youScore');
 const cpuScore = document.querySelector('.cpuScore');
+const results = document.querySelector('.resultsContainer');
 
-// Create counter variables for wins / losses
 let wins = 0;
 let losses = 0;
 
-
+// Add event listener to buttons and run game
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
+        results.textContent = '';
         playerSelection = button.classList.value;
         console.log(`Player Selection: ${playerSelection}`);
         getComputerChoice();
+        
+        if (playerSelection === cpuSelection) {
+            results.textContent = "Uh oh, a tie. Select again!";
+        } else {
+            playRound(cpuSelection, playerSelection);
+            updateScores(youScore, cpuScore, wins, losses);
+        };
+        
     })
 })
 
@@ -42,29 +46,20 @@ function getComputerChoice() {
 youScore.textContent = wins;
 cpuScore.textContent = losses;
 
-
-// Check for ties
-// if (cpuSelection === playerSelection) {
-//     getComputerChoice(num);
-//     getPlayerChoice();
-// }
-
-
-
 // Play a round of RPS given playerSelection and cpuSelection
-// function playRound(cpuSelection, playerSelection) {
-//     if ((cpuSelection === "rock" && playerSelection === "paper") || 
-//     (cpuSelection === "paper" && playerSelection === "scissors") || 
-//     (cpuSelection === "scissors" && playerSelection === "rock")) {
-//         wins++;
-//     } else {
-//         losses++;
-//     }
-// }
+function playRound(cpuSelection, playerSelection) {
+    if ((cpuSelection === "rock" && playerSelection === "paper") || 
+    (cpuSelection === "paper" && playerSelection === "scissors") || 
+    (cpuSelection === "scissors" && playerSelection === "rock")) {
+        results.textContent = 'You win! Noice!';
+        wins++;
+    } else {
+        results.textContent = 'Ah nuts.. L : /';
+        losses++;
+    }
+}
 
-
-// if (wins > losses) {
-//     alert(`You won! You got ${wins} wins and the cpu got ${losses}.`);
-// } else {
-//     alert(`You lost : / CPU got ${losses} wins and you got ${wins}.`);
-// };
+function updateScores(youScore, cpuScore, wins, losses) {
+    youScore.textContent = wins;
+    cpuScore.textContent = losses;
+}
