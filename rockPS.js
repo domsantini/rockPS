@@ -1,5 +1,5 @@
-// Set variables for computerSelection, playerSelection and generate random number between 0-2
-let computerSelection = undefined;
+// Set variables for cpuSelection, playerSelection and generate random number between 0-2
+let cpuSelection = undefined;
 let playerSelection = undefined;
 
 // const rock = document.querySelector(".rock");
@@ -7,9 +7,19 @@ let playerSelection = undefined;
 // const scissors = document.querySelector('.scissors');
 const buttons = document.querySelectorAll('button');
 
+const youScore = document.querySelector('.youScore');
+const cpuScore = document.querySelector('.cpuScore');
+
+// Create counter variables for wins / losses
+let wins = 0;
+let losses = 0;
+
+
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         playerSelection = button.classList.value;
+        console.log(`Player Selection: ${playerSelection}`);
+        getComputerChoice();
     })
 })
 
@@ -18,45 +28,34 @@ function getComputerChoice() {
     let num = Math.floor((Math.random() * 3));
 
     if (num === 0) {
-        computerSelection = "rock";
+        cpuSelection = "rock";
     } else if (num === 1) {
-        computerSelection = "paper";
+        cpuSelection = "paper";
     } else {
-        computerSelection = "scissors";
-    }    
+        cpuSelection = "scissors";
+    }
+    
+    console.log(`Computer Selection: ${cpuSelection}`);
 }
 
-// Run getComputerChoice function and assign computerSelection
-// getComputerChoice(num);
-    
-// Get user input w/ playerSelection
-// function getPlayerChoice() {
-//     playerSelection = prompt("What's your selection?").toLowerCase();
+// Display scores 
+youScore.textContent = wins;
+cpuScore.textContent = losses;
 
-//     // Validate user input
-//     while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
-//         playerSelection = prompt(`${playerSelection} is an invalid input. Please try "rock", "paper", or "scissors"!`).toLowerCase();
-//     }
-// }
-
-// getPlayerChoice();
 
 // Check for ties
-// if (computerSelection === playerSelection) {
+// if (cpuSelection === playerSelection) {
 //     getComputerChoice(num);
 //     getPlayerChoice();
 // }
 
 
-// Create counter variables for wins / losses
-// let wins = 0;
-// let losses = 0;
 
-// Play a round of RPS given playerSelection and computerSelection
-// function playRound(computerSelection, playerSelection) {
-//     if ((computerSelection === "rock" && playerSelection === "paper") || 
-//     (computerSelection === "paper" && playerSelection === "scissors") || 
-//     (computerSelection === "scissors" && playerSelection === "rock")) {
+// Play a round of RPS given playerSelection and cpuSelection
+// function playRound(cpuSelection, playerSelection) {
+//     if ((cpuSelection === "rock" && playerSelection === "paper") || 
+//     (cpuSelection === "paper" && playerSelection === "scissors") || 
+//     (cpuSelection === "scissors" && playerSelection === "rock")) {
 //         wins++;
 //     } else {
 //         losses++;
