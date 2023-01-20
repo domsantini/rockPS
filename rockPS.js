@@ -2,6 +2,17 @@
 let computerSelection = undefined;
 let playerSelection = undefined;
 
+// const rock = document.querySelector(".rock");
+// const paper = document.querySelector('.paper');
+// const scissors = document.querySelector('.scissors');
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        playerSelection = button.classList.value;
+    })
+})
+
 // Define getComputerChoice function
 function getComputerChoice() {
     let num = Math.floor((Math.random() * 3));
@@ -19,14 +30,14 @@ function getComputerChoice() {
 // getComputerChoice(num);
     
 // Get user input w/ playerSelection
-function getPlayerChoice() {
-    playerSelection = prompt("What's your selection?").toLowerCase();
+// function getPlayerChoice() {
+//     playerSelection = prompt("What's your selection?").toLowerCase();
 
-    // Validate user input
-    while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
-        playerSelection = prompt(`${playerSelection} is an invalid input. Please try "rock", "paper", or "scissors"!`).toLowerCase();
-    }
-}
+//     // Validate user input
+//     while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
+//         playerSelection = prompt(`${playerSelection} is an invalid input. Please try "rock", "paper", or "scissors"!`).toLowerCase();
+//     }
+// }
 
 // getPlayerChoice();
 
@@ -38,39 +49,23 @@ function getPlayerChoice() {
 
 
 // Create counter variables for wins / losses
-let wins = 0;
-let losses = 0;
+// let wins = 0;
+// let losses = 0;
 
 // Play a round of RPS given playerSelection and computerSelection
-function playRound(computerSelection, playerSelection) {
-    if ((computerSelection === "rock" && playerSelection === "paper") || 
-    (computerSelection === "paper" && playerSelection === "scissors") || 
-    (computerSelection === "scissors" && playerSelection === "rock")) {
-        wins++;
-    } else {
-        losses++;
-    }
-}
+// function playRound(computerSelection, playerSelection) {
+//     if ((computerSelection === "rock" && playerSelection === "paper") || 
+//     (computerSelection === "paper" && playerSelection === "scissors") || 
+//     (computerSelection === "scissors" && playerSelection === "rock")) {
+//         wins++;
+//     } else {
+//         losses++;
+//     }
+// }
 
-//playRound(computerSelection, playerSelection);
 
-// Play a 5 round game
-function game() {
-    for (let i = 0; i < 5; i++) {
-        getComputerChoice();
-        getPlayerChoice();
-        if (computerSelection === playerSelection) {
-            getComputerChoice();
-            getPlayerChoice();
-        }
-        playRound(computerSelection, playerSelection);
-    }
-}
-
-game();
-
-if (wins > losses) {
-    alert(`You won! You got ${wins} wins and the cpu got ${losses}.`);
-} else {
-    alert(`You lost : / CPU got ${losses} wins and you got ${wins}.`);
-};
+// if (wins > losses) {
+//     alert(`You won! You got ${wins} wins and the cpu got ${losses}.`);
+// } else {
+//     alert(`You lost : / CPU got ${losses} wins and you got ${wins}.`);
+// };
